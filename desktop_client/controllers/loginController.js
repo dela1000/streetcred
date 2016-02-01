@@ -1,6 +1,7 @@
 angular.module('App.login', [])
   .controller('LoginController', function($scope, $http, AppFactory){
     $scope.login = function(){
-      return AppFactory.login($scope.username, $scope.password)
+      console.log("+++ 4 loginController.js Here")
+      AppFactory.login($scope.username, $scope.password)
     }
   });

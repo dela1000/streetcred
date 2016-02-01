@@ -16,8 +16,7 @@ module.exports = {
           response.json({ locations });
         })
       })
-    },
-    put: function (request, response) {}
+    }
   },
 
   location: {
@@ -26,9 +25,7 @@ module.exports = {
      models.location.get(mapId, function (locations) {
         response.json({ locations });
      })
-    },
-    post: function (request, response){},
-    put: function (request, response) {}
+    }
   },
 
   progress: {
@@ -41,8 +38,6 @@ module.exports = {
           response.status(200).send(formattedProgress);
         })
       })
-    },
-    post: function (request, response) {
     },
     put: function (request, response) {
       var progressId = request.body.progressId;
@@ -61,7 +56,6 @@ module.exports = {
     post: function (request, response) {
       var username = request.body.username; //stringify because chris
       var password = request.body.password;// need to bcrypt
-
       models.login.post(username, password, function (isUser) {
         // response.redirect('/app') // PROBABLY GOOD IDEA TO REDIRECT TO ROUTE APP (HOW?)
         if (isUser) {
@@ -72,12 +66,10 @@ module.exports = {
          response.sendStatus(400);
         };
       })
-    },
-    put: function (request, response) {}
+    }
   },
 
   signup: {
-    get: function (request, response) {},
     post: function (request, response) {
       var username = request.body.username;
       var password = request.body.password; // need to bcrypt
@@ -91,7 +83,14 @@ module.exports = {
           response.sendStatus(400);
         };
       })
-    },
-    put: function (request, response) {}
+    }
+  },
+
+  logout:{
+    get: function (request, response, callback) {
+      utils.logout(request, response, function (loggedOut){
+        response.redirect('/#/login')
+      })
+    }
   }
 }

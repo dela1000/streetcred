@@ -1,16 +1,20 @@
 angular.module('App')
   .factory('AppFactory', function($http, $state){
     var login = function(username, password){
+      console.log("+++ 4 authFactory.js Login")
       return $http ({
         method: 'POST',
-        url: '/login',
+        url: 'http://localhost:8000/login',
         data: {
           username: username,
           password: password
         }
       })
       .then(function(success){
-        $state.go('createNewMap') // THIS WILL REDIRECT TO HOME
+        console.log("+++ 14 authFactory.js Success: ", success)
+        if (success.status === 200) {
+          $state.go('createNewMap') // THIS WILL REDIRECT TO HOME
+        };
       }, function(err){
         console.log(err);
       })
