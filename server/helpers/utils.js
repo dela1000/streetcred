@@ -12,7 +12,6 @@ exports.formatProgress = function(locations, progresses) {
 
 //create session
 exports.createSession = function(request, response, isUser, callback) {
-  console.log("+++ 15 utils.js Create")
   request.session.regenerate(function() {
     request.session.user = isUser.id
     callback(request.session.user)
@@ -30,12 +29,9 @@ var isLoggedOut = function(request) {
 
 // Reroute based on Auth status
 exports.checkUser = function(request, response, next) {
-  console.log("+++ 32 utils.js HELLO")
   if (isLoggedIn(request)) {
-    console.log("+++ 33 utils.js In")
     next();
   } else {
-    console.log("+++ 36 utils.js Out")
     response.redirect('/#/login')
   }
 }

@@ -9,6 +9,10 @@ router.get('/', function(request, response){
   response.status(202).sendFile(path.resolve(__dirname + "../../../desktop_client/index.html"));
 })
 
+router.get('/#/', utils.checkUser, function (request, response) {
+
+})
+
 router.get('/mapInfo', utils.checkUser, function (request, response) {
   controllers.mapInfo.get(request, response)
 })
@@ -34,13 +38,13 @@ router.post('/signup', function (request, response) {
 })
 
 router.post('/login', function (request, response) {
-  console.log("+++ 37 routes.js login")
   controllers.login.post(request, response)
 })
 
 router.get('/logout', function (request, response) {
   controllers.logout.get(request, response)
 })
+
 
 // for(var route in controllers){
 //   if(route === 'signup' || route === 'login'){
