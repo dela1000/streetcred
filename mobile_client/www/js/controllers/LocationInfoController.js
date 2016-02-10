@@ -43,6 +43,7 @@ angular.module('app.LocationInfoController', ['ionic.rating'])
     .then(function(imageData) {
       $scope.imgURI = "data:image/jpeg;base64," + imageData;
       Photo.storeImage($scope.currentLocation, $scope.userID, $scope.imgURI)
+      $scope.locationPhotos.push({"link": $scope.imgURI})
     }, function(err) {
         // An error occured. Show a message to the user
     });
@@ -51,6 +52,7 @@ angular.module('app.LocationInfoController', ['ionic.rating'])
   function retrievePhotos() {
     Photo.retrievePhotos($scope.currentLocation)
     .then(function (locationPhotos) {
+      console.log("locationPhotos: ", JSON.stringify(locationPhotos, null, "\t"));
       $scope.locationPhotos = locationPhotos.data
     })
   }

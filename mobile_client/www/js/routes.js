@@ -22,7 +22,7 @@ angular.module('app.routes', [])
       authenticate: true,
       params: {
         'currentMap': null,
-        'mapId': null       
+        'mapId': null
       }
     })
     .state('makerMap', {
@@ -61,5 +61,5 @@ angular.module('app.routes', [])
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/selectMap');
 });

@@ -37,7 +37,7 @@ function photo($http, $q, $ionicPopup) {
       url: url + '/photos?locationId=' + locationId
     })
     .then(function (locationPhotos) {
-    return locationPhotos
+      return locationPhotos
     },
     function (err) {
       $ionicPopup.alert({
