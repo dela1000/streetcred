@@ -41,8 +41,9 @@ angular.module('app.LocationInfoController', ['ionic.rating'])
 
     $cordovaCamera.getPicture(options)
     .then(function(imageData) {
-      $scope.imgURI = "data:image/jpeg;base64," + imageData;
-      Photo.storeImage($scope.currentLocation, $scope.userID, $scope.imgURI)
+      var imgURI = "data:image/jpeg;base64," + imageData;
+      Photo.storeImage($scope.currentLocation, $scope.userID, imgURI)
+      $scope.locationPhotos.push({"link": imgURI})
     }, function(err) {
         // An error occured. Show a message to the user
     });
